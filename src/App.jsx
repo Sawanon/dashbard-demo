@@ -1,3 +1,4 @@
+import { Bar } from './components/Bar'
 import SideBar from './components/SideBar'
 import { SearchNormal1, Command, Sms, Notification } from 'iconsax-react'
 
@@ -6,7 +7,9 @@ function App() {
   return (
     <div className={`bg-blue-400 absolute inset-0`}>
       <SideBar />
+      {/* content */}
       <div className={`h-[1200px] ml-24`}>
+        {/* header */}
         <div className={`bg-white h-24 flex items-center px-6 gap-6 sticky top-0`}>
           <div className={`font-bold text-2xl flex-grow`}>
             Analytics ✌️
@@ -26,7 +29,11 @@ function App() {
             <Notification size={'24'} />
           </div>
         </div>
-        content
+        <div className={`bg-[#F6F8FA] grid grid-cols-2 p-6`}>
+          <div className={`rounded-2xl bg-white p-4`}>
+            <Bar />
+          </div>
+        </div>
       </div>
     </div>
   )
