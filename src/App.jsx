@@ -1,4 +1,5 @@
 import { Bar } from './components/Bar'
+import LineChart from './components/LineChart'
 import SideBar from './components/SideBar'
 import { SearchNormal1, Command, Sms, Notification } from 'iconsax-react'
 
@@ -29,9 +30,30 @@ function App() {
             <Notification size={'24'} />
           </div>
         </div>
-        <div className={`bg-[#F6F8FA] grid grid-cols-2 p-6`}>
+        <div className={`bg-[#F6F8FA] grid grid-cols-2 p-6 gap-6`}>
           <div className={`rounded-2xl bg-white p-4`}>
             <Bar />
+          </div>
+          <div className={`bg-white rounded-2xl`}>
+            <div className={`border`}>
+              <div className={`flex`}>
+                <div className={`bg-yellow-200`}>
+                  <div className={`text-gray-400`}>
+                    Total Revenue
+                  </div>
+                  <div className={`text-3xl font-semibold`}>
+                    $4,562
+                  </div>
+                </div>
+                <div>
+                  <LineChart />
+                </div>
+              </div>
+              <div className={`space-x-2 text-sm`}>
+                <span className={`text-green-400`}>+12%</span>
+                <span className={`text-gray-400`}>vs preview . 28 days</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
