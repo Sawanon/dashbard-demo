@@ -2,6 +2,7 @@ import { Bar } from './components/Bar'
 import LineChart from './components/LineChart'
 import SideBar from './components/SideBar'
 import { SearchNormal1, Command, Sms, Notification } from 'iconsax-react'
+import PropTypes from 'prop-types'
 
 function App() {
 
@@ -31,29 +32,40 @@ function App() {
           </div>
         </div>
         <div className={`bg-[#F6F8FA] grid grid-cols-2 p-6 gap-6`}>
-          <div className={`rounded-2xl bg-white p-4`}>
+          <div className={`rounded-2xl bg-white p-4 h-[320px]`}>
             <Bar />
           </div>
-          <div className={`bg-white rounded-2xl`}>
-            <div className={`border`}>
-              <div className={`flex`}>
-                <div className={`bg-yellow-200`}>
-                  <div className={`text-gray-400`}>
-                    Total Revenue
-                  </div>
-                  <div className={`text-3xl font-semibold`}>
-                    $4,562
-                  </div>
-                </div>
-                <div>
-                  <LineChart />
-                </div>
-              </div>
-              <div className={`space-x-2 text-sm`}>
-                <span className={`text-green-400`}>+12%</span>
-                <span className={`text-gray-400`}>vs preview . 28 days</span>
-              </div>
-            </div>
+          <div className={`rounded-2xl grid grid-cols-2 gap-1 overflow-hidden`}>
+            <CardChart
+              title={'Total Revenue'}
+              balance={`$4,562`}
+              description={
+                <>
+                  <span className={`text-green-400`}>+12%</span>
+                  <span className={`text-gray-400`}>vs preview . 28 days</span>
+                </>
+              }
+            />
+            <CardChart
+              title={'Total Visitors'}
+              balance={`$2,562`}
+              description={
+                <>
+                  <span className={`text-green-400`}>+4%</span>
+                  <span className={`text-gray-400`}>vs preview . 28 days</span>
+                </>
+              }
+            />
+            <CardChart
+              title={'Total Transactions'}
+              balance={`$2,262`}
+              description={
+                <>
+                  <span className={`text-red-400`}>-0.89%</span>
+                  <span className={`text-gray-400`}>vs preview . 28 days</span>
+                </>
+              }
+            />
           </div>
         </div>
       </div>
@@ -62,3 +74,55 @@ function App() {
 }
 
 export default App
+
+const CardChart = ({
+  title,
+  balance,
+  description,
+  isGrow = false,
+}) => {
+  const color = () => {
+    if(isGrow){
+      return {
+        borderColor: 'rgba(60, 213, 152, 1)',
+        fromColor:'rgba(60, 213, 152, 0.4)',
+            toColor:'rgba(60, 213, 152, 0)',
+      }
+    }
+    return {
+      borderColor: 'rgba(60, 213, 152, 1)',
+      fromColor:'rgba(60, 213, 152, 0.4)',
+          toColor:'rgba(60, 213, 152, 0)',
+    }
+  }
+  return (
+    <div className={`flex p-4 bg-white`}>
+      <div className={`flex-grow `}>
+        <div className={`text-gray-400 text-sm`}>
+          {title}
+        </div>
+        <div className={`text-3xl font-semibold mt-2`}>
+          {balance}
+        </div>
+        <div className={`space-x-2 text-sm mt-6`}>
+          {description}
+        </div>
+      </div>
+      <div className={`flex items-center`}>
+        <div className={`h-[60px] w-[140px]`}>
+          <LineChart
+            borderColor={`rgba(60, 213, 152, 1)`}
+            fromColor='rgba(60, 213, 152, 0.4)'
+            toColor='rgba(60, 213, 152, 0)'
+          />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+CardChart.propTypes = {
+  title: PropTypes.string.isRequired,
+  balance: PropTypes.string.isRequired,
+  description: PropTypes.node,
+}
