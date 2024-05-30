@@ -25,14 +25,28 @@ ChartJS.register(
 );
 const labels = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 
-
+let index = 0
 const LineChart = ({
   borderColor,
   fromColor,
   toColor,
 }) => {
+  const backgroundColor = [fromColor, toColor];
   return (
     <Line
+      // plugins={[
+      //   {
+      //     id: 'xScalePadding',
+      //     beforeDatasetDraw: (chart, args, pluginOptions) => {
+      //       const { ctx, data, scales: { x, y } } = chart
+      //       console.log("🚀 ~ scales:", y)
+      //       // x._labelItems.forEach((label, index) => {
+      //       //   label.textBaseline = 'top'
+      //       //   label.textOffset = 5 + 25;
+      //       // })
+      //     }
+      //   }
+      // ]}
       options={{
         responsive: true,
         maintainAspectRatio: false,
@@ -69,7 +83,7 @@ const LineChart = ({
         datasets: [
           {
             tension: 0.4,
-            label: 'Dataset 1',
+            label: 'Test 1',
             data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
             // borderColor: labels.map(() => 'rgb(255, 99, 132)'),
             // backgroundColor: labels.map(() => '#000'),
@@ -79,11 +93,15 @@ const LineChart = ({
             pointBorderColor: 'transparent',
             pointBackgroundColor: 'transparent',
             backgroundColor: (context) => {
-              console.log("context", context.chart.chartArea);
-              if(!context.chart.chartArea){
+              index++
+              console.log("index", index);
+              if (!context.chart.chartArea) {
                 return
               }
-              const { ctx, chartArea: {top, bottom} } = context.chart
+              
+              // console.log("context", context.datasetIndex);
+              const { ctx, data, chartArea: { top, bottom } } = context.chart
+              // console.log("🚀 ~ data:", data)
               const gradienBg = ctx.createLinearGradient(0, top, 0, bottom)
               gradienBg.addColorStop(0, fromColor)
               gradienBg.addColorStop(1, toColor)
