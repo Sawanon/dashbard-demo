@@ -2,8 +2,9 @@ import { Bar } from "./components/Bar";
 import LineChart from "./components/LineChart";
 import LineChartMultiBackground from "./components/LineChartMultiBackground";
 import SideBar from "./components/SideBar";
-import { SearchNormal1, Command, Sms, Notification } from "iconsax-react";
+import { SearchNormal1, Command, Sms, Notification, ChartCircle, Filter, People, PercentageCircle } from "iconsax-react";
 import PropTypes from "prop-types";
+import { PieChart } from "./components/PieChart";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <div className={`h-[1200px] ml-24`}>
         {/* header */}
         <div
-          className={`bg-white h-24 flex items-center px-6 gap-6 sticky top-0`}
+          className={`bg-white h-24 flex items-center px-6 gap-6 sticky top-0 z-10`}
         >
           <div className={`font-bold text-2xl flex-grow`}>Analytics ✌️</div>
           <div className="bg-gray-100 px-4 py-2 h-12 rounded-2xl flex items-center gap-2 text-sm">
@@ -89,24 +90,74 @@ function App() {
               }
             />
           </div>
-          <div className={`bg-white rounded-2xl relative overflow-hidden`}>
-              <div className={`flex absolute inset-0`}>
-                <div className={`w-1/4`}></div>
-                <div className={`w-1/4 border-l border-red-400`}></div>
-                <div className={`w-1/4 border-l border-red-400`}></div>
-                <div className={`w-1/4 border-l border-red-400`}></div>
+          <div className={`bg-white rounded-2xl relative overflow-hidden flex flex-col justify-between shadow-md`}>
+            <div className={`flex absolute inset-0`}>
+              <div className={`w-1/4`}></div>
+              <div className={`w-1/4 border-l border-dashed border-primary border-opacity-20`}></div>
+              <div className={`w-1/4 border-l border-dashed border-primary border-opacity-20`}></div>
+              <div className={`w-1/4 border-l border-dashed border-primary border-opacity-20`}></div>
+            </div>
+            <div className={`p-4 font-semibold`}>Sales Funnel</div>  
+            <div className={`flex mt-4`}>
+              <div className={` w-1/4 flex justify-center`}>
+                <div className={``}>
+                  <div className={`flex gap-4`}>
+                    <div className={`w-6 h-6 bg-primary flex justify-center items-center rounded-md`}>
+                      <ChartCircle color="#fff" size={'18px'} variant="Bold" />
+                    </div>
+                    <div className={`text-base text-black text-opacity-60`}>
+                      Total Market
+                    </div>
+                  </div>
+                  <div className={`text-2xl font-semibold tracking-wide mt-2`}>$4,562</div>
+                </div>
               </div>
-            <div className={`flex`}>
-              <div className={`bg-red-400 w-1/4 flex justify-center`}>
-                <div className={`bg-green-400`}>
-                  <div>Total Market</div>
-                  <div>$4,562</div>
+              <div className={` w-1/4 flex justify-center`}>
+                <div className={``}>
+                  <div className={`flex gap-4`}>
+                    <div className={`w-6 h-6 bg-amber-500 flex justify-center items-center rounded-md`}>
+                      <Filter color="#fff" size={'18px'} variant="Bold" />
+                    </div>
+                    <div className={`text-base text-black text-opacity-60`}>
+                      Prospects
+                    </div>
+                  </div>
+                  <div className={`text-2xl font-semibold tracking-wide mt-2`}>$2,562</div>
+                </div>
+              </div>
+              <div className={` w-1/4 flex justify-center`}>
+                <div className={``}>
+                  <div className={`flex gap-4`}>
+                    <div className={`w-6 h-6 bg-red-400 flex justify-center items-center rounded-md`}>
+                      <People color="#fff" size={'18px'} variant="Bold" />
+                    </div>
+                    <div className={`text-base text-black text-opacity-60`}>
+                      Leads
+                    </div>
+                  </div>
+                  <div className={`text-2xl font-semibold tracking-wide mt-2`}>$1,262</div>
+                </div>
+              </div>
+              <div className={` w-1/4 flex justify-center`}>
+                <div className={``}>
+                  <div className={`flex gap-4`}>
+                    <div className={`w-6 h-6 bg-green-500 flex justify-center items-center rounded-md`}>
+                      <PercentageCircle color="#fff" size={'18px'} variant="Bold" />
+                    </div>
+                    <div className={`text-base text-black text-opacity-60`}>
+                      Leads
+                    </div>
+                  </div>
+                  <div className={`text-2xl font-semibold tracking-wide mt-2`}>$1,000</div>
                 </div>
               </div>
             </div>
-            <div>
+            <div className={`h-[200px] mt-4`}>
               <LineChartMultiBackground />
             </div>
+          </div>
+          <div className={`bg-white h-[300px]`}>
+            <PieChart />
           </div>
         </div>
       </div>
