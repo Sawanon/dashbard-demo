@@ -8,10 +8,10 @@ import { PieChart } from "./components/PieChart";
 
 function App() {
   return (
-    <div className={`bg-blue-400 absolute inset-0`}>
+    <div className={`absolute inset-0 bg-[#F6F8FA]`}>
       <SideBar />
       {/* content */}
-      <div className={`h-[1200px] ml-24`}>
+      <div className={` ml-24`}>
         {/* header */}
         <div
           className={`bg-white h-24 flex items-center px-6 gap-6 sticky top-0 z-10`}
@@ -43,7 +43,7 @@ function App() {
             <Notification size={"24"} />
           </div>
         </div>
-        <div className={`bg-[#F6F8FA] grid grid-cols-2 p-6 gap-6`}>
+        <div className={` grid grid-cols-2 p-6 gap-6`}>
           <div className={`rounded-2xl bg-white p-4 h-[320px]`}>
             <Bar />
           </div>
@@ -90,7 +90,7 @@ function App() {
               }
             />
           </div>
-          <div className={`bg-white rounded-2xl relative overflow-hidden flex flex-col justify-between shadow-md`}>
+          <div className={`bg-white rounded-2xl relative overflow-hidden flex flex-col justify-between`}>
             <div className={`flex absolute inset-0`}>
               <div className={`w-1/4`}></div>
               <div className={`w-1/4 border-l border-dashed border-primary border-opacity-20`}></div>
@@ -156,8 +156,52 @@ function App() {
               <LineChartMultiBackground />
             </div>
           </div>
-          <div className={`bg-white h-[300px]`}>
-            <PieChart />
+          <div className={`bg-white flex flex-col rounded-2xl p-4`}>
+            <div>
+              Sales by Category
+            </div>
+            <div className={`flex flex-grow`}>
+              <div className={`w-2/6 flex flex-col border-r border-gray-100`}>
+                <div className={`flex-grow flex flex-col justify-evenly`}>
+                  <div className={`flex gap-2`}>
+                    <div className={`w-3 h-3 bg-primary rounded-full mt-[6px]`}></div>
+                    <div>
+                      <div className={`font-semibold`}>
+                        Clothing {`(25%)`}
+                      </div>
+                      <div className={`text-black text-opacity-40 text-sm`}>
+                        1,348 Category Products
+                      </div>
+                    </div>
+                  </div>
+                  <div className={`flex gap-2`}>
+                    <div className={`w-3 h-3 bg-black bg-opacity-10 rounded-full mt-[6px]`}></div>
+                    <div>
+                      <div className={`font-semibold`}>
+                        Body Fit {`(35%)`}
+                      </div>
+                      <div className={`text-black text-opacity-40 text-sm`}>
+                        1,348 Category Products
+                      </div>
+                    </div>
+                  </div>
+                  <div className={`flex gap-2`}>
+                    <div className={`w-3 h-3 bg-black bg-opacity-10 rounded-full mt-[6px]`}></div>
+                    <div>
+                      <div className={`font-semibold`}>
+                        Sportswear {`(40%)`}
+                      </div>
+                      <div className={`text-black text-opacity-40 text-sm`}>
+                        1,348 Category Products
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className={`w-4/6`}>
+                <PieChart />
+              </div>
+            </div>
           </div>
         </div>
       </div>
